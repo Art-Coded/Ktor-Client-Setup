@@ -1,6 +1,8 @@
 package com.example.ktorclient.client
 
+import com.example.ktorclient.model.Post
 import io.ktor.client.HttpClient
+import io.ktor.client.call.body
 import io.ktor.client.plugins.DefaultRequest
 import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
@@ -8,6 +10,7 @@ import io.ktor.client.plugins.logging.ANDROID
 import io.ktor.client.plugins.logging.LogLevel
 import io.ktor.client.plugins.logging.Logger
 import io.ktor.client.plugins.logging.Logging
+import io.ktor.client.request.get
 import io.ktor.client.request.headers
 import io.ktor.client.utils.EmptyContent.headers
 import io.ktor.http.HttpHeaders
@@ -49,5 +52,9 @@ class KtorClient {
         }
     }
 
+    suspend fun getPosts():List<Post> {
+        return getClient().get("/posts")
+            .body<List<Post>>()
+    }
 
 }
