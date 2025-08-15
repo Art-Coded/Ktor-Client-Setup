@@ -70,7 +70,7 @@ dependencies {
     implementation("io.ktor:ktor-client-logging:3.2.3")
 
     // SLF4J logging support
-    implementation("io.ktor:ktor-slf4j:3.2.3")
+    implementation("ch.qos.logback:logback-classic:1.5.8")
 
     // KotlinX serialization JSON
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0")
