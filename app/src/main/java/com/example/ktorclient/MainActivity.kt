@@ -48,6 +48,11 @@ class MainActivity : ComponentActivity() {
                         userId = 3
                     )
                 )
+                val patch = KtorClient().patch(
+                    mapOf("title" to "jdvnksdjvnsdkfjvndsfkhvbn"),
+                    1
+                )
+                Log.d("TAGGGGGGGGGGGGGGGGGGG", "onCreate PATCH: ${patch}")
                 Log.d("TAGGGGGGGGGGG", "onCreate: ${postPost}")
             }
 

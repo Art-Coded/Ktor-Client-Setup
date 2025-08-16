@@ -12,6 +12,7 @@ import io.ktor.client.plugins.logging.Logger
 import io.ktor.client.plugins.logging.Logging
 import io.ktor.client.request.get
 import io.ktor.client.request.headers
+import io.ktor.client.request.patch
 import io.ktor.client.request.post
 import io.ktor.client.request.setBody
 import io.ktor.client.utils.EmptyContent.contentType
@@ -70,6 +71,18 @@ class KtorClient {
             }
             contentType(ContentType.Application.Json)
             setBody(post)
+        }.body<Post>()
+    }
+
+    //PATCH is for updating only 1 field in your body
+    //PUT replaces all information which is print in your post body
+    suspend fun patch(map:Map<String,String>,id:Int): Post {
+        return getClient().patch {
+            url {
+                path("/posts/${id}")
+                contentType(ContentType.Application.Json)
+                setBody(map)
+            }
         }.body<Post>()
     }
 
