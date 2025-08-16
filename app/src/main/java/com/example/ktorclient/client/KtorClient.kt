@@ -1,5 +1,6 @@
 package com.example.ktorclient.client
 
+import com.example.ktorclient.model.Comment
 import com.example.ktorclient.model.Post
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
@@ -13,6 +14,7 @@ import io.ktor.client.plugins.logging.Logging
 import io.ktor.client.request.delete
 import io.ktor.client.request.get
 import io.ktor.client.request.headers
+import io.ktor.client.request.parameter
 import io.ktor.client.request.patch
 import io.ktor.client.request.post
 import io.ktor.client.request.put
@@ -105,6 +107,16 @@ class KtorClient {
                 path("/posts/${id}")
             }
         }
+    }
+
+    // https://jsonplaceholder.typicode.com/comments?postId=1
+    suspend fun getComments(id:Int):List<Comment> {
+        return getClient().get {
+            url {
+                path("/comments")
+                parameter("postId", id)
+            }
+        }.body<List<Comment>>()
     }
 
 }

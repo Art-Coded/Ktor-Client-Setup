@@ -66,6 +66,9 @@ class MainActivity : ComponentActivity() {
 
                 val delete = KtorClient().delete(1)
 
+                val comments = KtorClient().getComments(1)
+
+                Log.d("TAGGGG", "onCreate COMMENTS: ${comments}")
                 Log.d("TAGGGGGGG", "onCreate DELETE: ${delete.status.value}")
                 Log.d("TAGGGGGGGGGGGGGGGGGGG", "onCreate PATCH: ${patch}")
                 Log.d("TAGGGGGGGGGGG", "onCreate PUT: ${put}")
