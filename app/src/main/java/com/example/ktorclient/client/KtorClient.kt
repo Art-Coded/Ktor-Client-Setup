@@ -12,9 +12,15 @@ import io.ktor.client.plugins.logging.Logger
 import io.ktor.client.plugins.logging.Logging
 import io.ktor.client.request.get
 import io.ktor.client.request.headers
+import io.ktor.client.request.post
+import io.ktor.client.request.setBody
+import io.ktor.client.utils.EmptyContent.contentType
 import io.ktor.client.utils.EmptyContent.headers
+import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
 import io.ktor.http.URLProtocol
+import io.ktor.http.contentType
+import io.ktor.http.path
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
@@ -55,6 +61,16 @@ class KtorClient {
     suspend fun getPosts():List<Post> {
         return getClient().get("/posts")
             .body<List<Post>>()
+    }
+
+    suspend fun postPost(post: Post): Post {
+        return getClient().post {
+            url {
+                path("/posts")
+            }
+            contentType(ContentType.Application.Json)
+            setBody(post)
+        }.body<Post>()
     }
 
 }
