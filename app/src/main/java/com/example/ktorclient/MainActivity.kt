@@ -75,7 +75,7 @@ fun MainContent(modifier: Modifier = Modifier, list: List<Post>) {
                 Spacer(Modifier.height(8.dp))
 
                 Text(
-                    text = it.Body,
+                    text = it.body,
                     style = MaterialTheme.typography.bodyMedium
                 )
             }
