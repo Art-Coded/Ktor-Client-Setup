@@ -64,6 +64,9 @@ class MainActivity : ComponentActivity() {
                     1
                 )
 
+                val delete = KtorClient().delete(1)
+
+                Log.d("TAGGGGGGG", "onCreate DELETE: ${delete.status.value}")
                 Log.d("TAGGGGGGGGGGGGGGGGGGG", "onCreate PATCH: ${patch}")
                 Log.d("TAGGGGGGGGGGG", "onCreate PUT: ${put}")
                 Log.d("TAGGGGGGGGGGG", "onCreate: ${postPost}")
